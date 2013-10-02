@@ -5,6 +5,13 @@ public class PrintPrimes {
   int comparisonBoundryMax;
   int listOfPrimes[];
 
+  final int FIRST_PRIME = 2;
+  final int STARTING_COMPARISON_BOUNDRY = 2;
+  final int STARTNG_NUMBER = 1;
+  final int FIRST_SQUARE = 9;
+  final int STARTING_PAGE_NUMBER = 1;
+  final int STARTING_PAGE_OFFSET = 1;
+  
   public PrintPrimes(int numberOfPrimes, int nummberOfRows, int numberOfColums, int comparisonBountry) 
   {
     this.numberOfPrimes   = numberOfPrimes;
@@ -29,7 +36,7 @@ public class PrintPrimes {
        * delegate the task of finding all odd prime numbers to a helper
        * function.
        */
-      listOfPrimes[1] = 2;
+      listOfPrimes[1] = FIRST_PRIME;
       calculateOddPrimes();
   }
 
@@ -39,9 +46,9 @@ public class PrintPrimes {
       int currentPrimeNumberIndex;
       int multiplesOfPrimes[] = new int[comparisonBoundryMax + 1];
 
-      int currentNumber = 1;
-      int comparisonBoundry = 2;
-      int square = 9;
+      int currentNumber = STARTNG_NUMBER;
+      int comparisonBoundry = STARTING_COMPARISON_BOUNDRY;
+      int square = FIRST_SQUARE;
 
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++)
       {
@@ -76,8 +83,8 @@ public class PrintPrimes {
 
     public void printPrimes() 
     {
-        int pageNumber = 1;
-        int pageOffset = 1;
+        int pageNumber = STARTING_PAGE_NUMBER;
+        int pageOffset = STARTING_PAGE_OFFSET;
         while (pageOffset <= numberOfPrimes) 
         {
           System.out.println("The First " + numberOfPrimes +" Prime Numbers --- Page " + pageNumber);
