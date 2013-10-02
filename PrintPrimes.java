@@ -18,7 +18,7 @@ public class PrintPrimes {
     this.numberOfRows  = nummberOfRows;
     this.numberOfColums  = numberOfColums;
     this.comparisonBoundryMax = comparisonBountryMax;
-    this.listOfPrimes = new int[numberOfPrimes + 1];
+    this.listOfPrimes = new int[numberOfPrimes++];
   }
 
 
@@ -44,7 +44,7 @@ public class PrintPrimes {
   {
       boolean isPrime;
       int currentPrimeNumberIndex;
-      int multiplesOfPrimes[] = new int[comparisonBoundryMax + 1];
+      int multiplesOfPrimes[] = new int[comparisonBoundryMax++];
 
       int currentNumber = STARTNG_NUMBER;
       int comparisonBoundry = STARTING_COMPARISON_BOUNDRY;
@@ -59,7 +59,7 @@ public class PrintPrimes {
           {
             comparisonBoundry ++;
             square = listOfPrimes[comparisonBoundry] * listOfPrimes[comparisonBoundry];
-            multiplesOfPrimes[comparisonBoundry - 1] = currentNumber;
+            multiplesOfPrimes[comparisonBoundry--] = currentNumber;
           }
           currentPrimeNumberIndex = 2;
           isPrime = true;
