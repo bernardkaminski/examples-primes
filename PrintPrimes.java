@@ -12,12 +12,12 @@ public class PrintPrimes {
   final int STARTING_PAGE_NUMBER = 1;
   final int STARTING_PAGE_OFFSET = 1;
   
-  public PrintPrimes(int numberOfPrimes, int nummberOfRows, int numberOfColums, int comparisonBountry) 
+  public PrintPrimes(int numberOfPrimes, int nummberOfRows, int numberOfColums, int comparisonBountryMax) 
   {
     this.numberOfPrimes   = numberOfPrimes;
     this.numberOfRows  = nummberOfRows;
     this.numberOfColums  = numberOfColums;
-    this.comparisonBoundryMax = comparisonBountry;
+    this.comparisonBoundryMax = comparisonBountryMax;
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
@@ -54,10 +54,10 @@ public class PrintPrimes {
       {
         do 
         {
-          currentNumber = currentNumber + 2;
+          currentNumber +=2;
           if (currentNumber == square) 
           {
-            comparisonBoundry = comparisonBoundry + 1;
+            comparisonBoundry ++;
             square = listOfPrimes[comparisonBoundry] * listOfPrimes[comparisonBoundry];
             multiplesOfPrimes[comparisonBoundry - 1] = currentNumber;
           }
@@ -73,7 +73,7 @@ public class PrintPrimes {
             {
               isPrime = false;
             }
-            currentPrimeNumberIndex = currentPrimeNumberIndex + 1;
+            currentPrimeNumberIndex ++;
           }
         } while (!isPrime);
         
@@ -101,7 +101,7 @@ public class PrintPrimes {
             System.out.println("");
           }
           System.out.println("\f");
-          pageNumber = pageNumber + 1;
+          pageNumber ++;
           pageOffset = pageOffset + numberOfRows * numberOfColums;
         }
     }
