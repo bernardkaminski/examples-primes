@@ -82,7 +82,7 @@ public class PrintPrimes {
             
             square = listOfPrimes[comparisonBoundry] * listOfPrimes[comparisonBoundry];
             
-            multiplesOfPrimes[--comparisonBoundry] = currentNumber;//store the square that was reached
+            multiplesOfPrimes[comparisonBoundry - 1] = currentNumber;//store the square that was reached
           }
           primeNumberIndex = 2;//start comparisons always at the third index ie 3 
           isPrime = true;
