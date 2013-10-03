@@ -1,17 +1,17 @@
 public class PrintPrimes {
-  int numberOfPrimes;
-  int numberOfRows;
-  int numberOfColums;
+  int primesToBePrinted;
+  int rowsToBePrinted;
+  int columsToBePrinted;
   int comparisonBoundryMax;
   int listOfPrimes[];
 
   //constants
-  final int FIRST_PRIME = 2;
-  final int STARTING_COMPARISON_BOUNDRY = 2;
-  final int STARTNG_NUMBER = 1;
+  final int PRIME_THE_FIRST = 2;
+  final int COMPARISON_BOUNDRY_STARTING = 2;
+  final int NUMBER_STARTNG = 1;
   final int FIRST_SQUARE = 9;
-  final int STARTING_PAGE_NUMBER = 1;
-  final int STARTING_PAGE_OFFSET = 1;
+  final int PAGE_NUMBER_FIRST = 1;
+  final int OFFSET_FIRST = 1;
 
   /*Constructor description
    ************************************************************
@@ -20,13 +20,13 @@ public class PrintPrimes {
    * how many prime numbers will be printed and how they will be printed
    ************************************************************  
    */
-  public PrintPrimes(int numberOfPrimes, int nummberOfRows, int numberOfColums, int comparisonBountryMax) 
+  public PrintPrimes(int primesToBePrinted, int rowsToBePrinted, int columsToBePrinted, int comparisonBountryMax) 
   {
-    this.numberOfPrimes   = numberOfPrimes;
-    this.numberOfRows  = nummberOfRows;
-    this.numberOfColums  = numberOfColums;
+    this.primesToBePrinted   = primesToBePrinted;
+    this.rowsToBePrinted  = rowsToBePrinted;
+    this.columsToBePrinted  = columsToBePrinted;
     this.comparisonBoundryMax = comparisonBountryMax;
-    this.listOfPrimes = new int[++numberOfPrimes];
+    this.listOfPrimes = new int[++primesToBePrinted];
   }
 
 
@@ -46,7 +46,7 @@ public class PrintPrimes {
        * delegate the task of finding all odd prime numbers to a helper
        * function.
        */
-      listOfPrimes[1] = FIRST_PRIME;
+      listOfPrimes[1] = PRIME_THE_FIRST;
       calculateOddPrimes();
   }
   
@@ -66,11 +66,11 @@ public class PrintPrimes {
       int primeNumberIndex;//prime number index that is in charge of iterating through the range of multiples of prime numbers 
       int multiplesOfPrimes[] = new int[comparisonBoundryMax+1];//array that holds the multiples of prime numbers found in order to compare them with the current number being checked 
 
-      int currentNumber = STARTNG_NUMBER;//the current number that is being checked for primeness. starts at 1  
-      int comparisonBoundry = STARTING_COMPARISON_BOUNDRY;//keeps track of the range of prime multiples that will be compared to current number 
+      int currentNumber = NUMBER_STARTNG;//the current number that is being checked for primeness. starts at 1  
+      int comparisonBoundry = COMPARISON_BOUNDRY_STARTING;//keeps track of the range of prime multiples that will be compared to current number 
       int square = FIRST_SQUARE;//the first square is set to 9 as 2^2 is 4 which is even 
 
-      for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++)
+      for(int primesFoundSoFar = 2; primesFoundSoFar <= primesToBePrinted; primesFoundSoFar++)
       {
         do 
         {
@@ -114,26 +114,26 @@ public class PrintPrimes {
   	 */
     public void printPrimesToConsole() 
     {
-        int pageNumber = STARTING_PAGE_NUMBER;
-        int pageOffset = STARTING_PAGE_OFFSET;
-        while (pageOffset <= numberOfPrimes)//while not all the prime numbers have been printed keep printing pages  
+        int pageNumber = PAGE_NUMBER_FIRST;
+        int offsetOfPage = OFFSET_FIRST;
+        while (offsetOfPage <= primesToBePrinted)//while not all the prime numbers have been printed keep printing pages  
         {
-          System.out.println("The First " + numberOfPrimes +" Prime Numbers --- Page " + pageNumber);
+          System.out.println("The First " + primesToBePrinted +" Prime Numbers --- Page " + pageNumber);
           System.out.println("");
-          for (int rowOffset = pageOffset; rowOffset < pageOffset + numberOfRows; rowOffset++)//keep printing rows until the number of set rows is reached  
+          for (int rowOffset = offsetOfPage; rowOffset < offsetOfPage + rowsToBePrinted; rowOffset++)//keep printing rows until the number of set rows is reached  
           {
-            for (int C = 0; C < numberOfColums;C++)//print row of primes until the number of set columns is reached
+            for (int C = 0; C < columsToBePrinted;C++)//print row of primes until the number of set columns is reached
             {
-              if (rowOffset + C * numberOfRows <= numberOfPrimes)//if the number of primes printed is less then the number of primes found 
+              if (rowOffset + C * rowsToBePrinted <= primesToBePrinted)//if the number of primes printed is less then the number of primes found 
               {
-                System.out.format("%10d", listOfPrimes[rowOffset + C * numberOfRows]);
+                System.out.format("%10d", listOfPrimes[rowOffset + C * rowsToBePrinted]);
               }
             }
             System.out.println("");
           }
           System.out.println("\f");
           pageNumber ++;
-          pageOffset = pageOffset + numberOfRows * numberOfColums;
+          offsetOfPage = offsetOfPage + rowsToBePrinted * columsToBePrinted;
         }
     }
 }
