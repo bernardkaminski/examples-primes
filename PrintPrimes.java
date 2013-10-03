@@ -43,7 +43,7 @@ public class PrintPrimes {
   private void calculateOddPrimes() 
   {
       boolean isPrime;
-      int currentPrimeNumberIndex;
+      int primeNumberIndex;
       int multiplesOfPrimes[] = new int[comparisonBoundryMax++];
 
       int currentNumber = STARTNG_NUMBER;
@@ -61,19 +61,19 @@ public class PrintPrimes {
             square = listOfPrimes[comparisonBoundry] * listOfPrimes[comparisonBoundry];
             multiplesOfPrimes[comparisonBoundry--] = currentNumber;
           }
-          currentPrimeNumberIndex = 2;
+          primeNumberIndex = 2;
           isPrime = true;
-          while (currentPrimeNumberIndex < comparisonBoundry && isPrime) 
+          while (primeNumberIndex < comparisonBoundry && isPrime) 
           {
-            while (multiplesOfPrimes[currentPrimeNumberIndex] < currentNumber)
+            while (multiplesOfPrimes[primeNumberIndex] < currentNumber)
             {
-            	multiplesOfPrimes[currentPrimeNumberIndex] = multiplesOfPrimes[currentPrimeNumberIndex] + listOfPrimes[currentPrimeNumberIndex] + listOfPrimes[currentPrimeNumberIndex];
+            	multiplesOfPrimes[primeNumberIndex] += 2*listOfPrimes[primeNumberIndex];
             }
-            if (multiplesOfPrimes[currentPrimeNumberIndex] == currentNumber)
+            if (multiplesOfPrimes[primeNumberIndex] == currentNumber)
             {
               isPrime = false;
             }
-            currentPrimeNumberIndex ++;
+            primeNumberIndex ++;
           }
         } while (!isPrime);
         
